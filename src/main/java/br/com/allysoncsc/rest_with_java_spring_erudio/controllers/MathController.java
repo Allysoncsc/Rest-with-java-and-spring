@@ -1,6 +1,7 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.controllers;
 
 
+import br.com.allysoncsc.rest_with_java_spring_erudio.exception.UnsupportedMathOperationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +16,12 @@ public class MathController {
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo)throws Exception{
 
-        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedMathOperationException("Please set a numeric value.");
         return converToDouble(numberOne) + converToDouble(numberTwo);
     }
 
     private Double converToDouble(String strNumber) throws IllegalArgumentException{
-        if(strNumber == null || strNumber.isEmpty()) throw new IllegalArgumentException();
+        if(strNumber == null || strNumber.isEmpty()) throw new UnsupportedMathOperationException("Please set a numeric value.");
         String number = strNumber.replace(",",".");
         return Double.parseDouble(number);
     }
