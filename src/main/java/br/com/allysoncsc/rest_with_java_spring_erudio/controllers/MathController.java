@@ -10,11 +10,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/math")
 public class MathController {
 
-    @RequestMapping("/sum")
+    @RequestMapping("/sum/{numberOne}/{numberTwo}")
     public Double sum(
             @PathVariable("numberOne") String numberOne,
-            @PathVariable("numberTwo") String numberTwo){
+            @PathVariable("numberTwo") String numberTwo)throws Exception{
 
-        return null;
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        return converToDouble(numberOne) + converToDouble(numberTwo);
+    }
+
+    private Double converToDouble(String strNumber) throws IllegalArgumentException{
+        if(strNumber == null || strNumber.isEmpty()) throw new IllegalArgumentException();
+        String number = strNumber.replace(",",".");
+        return Double.parseDouble(number);
+    }
+
+    private boolean isNumeric(String strNumber) {
+        if(strNumber == null || strNumber.isEmpty()) return false;
+        String number = strNumber.replace(",",".");
+        //regex valida numeros positivos que vão de 0 a 9 e após a vígurla vão de 0 a 9
+        return number.matches("[+-]?[0-9]*\\.?[0-9]+");
+
     }
 }
