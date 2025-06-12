@@ -1,1 +1,15 @@
-spring.application.name=rest-with-java-spring-erudio
+spring:
+  application:
+    name: rest-with-java-spring-erudio
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/rest_java?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: ec@vxx123
+  jpa:
+    hibernate:
+      ddl-auto: update
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  show-sql: false
