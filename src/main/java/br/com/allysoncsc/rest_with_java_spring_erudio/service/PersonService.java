@@ -48,4 +48,13 @@ public class PersonService {
         return person;
     }
 
+    public Person create(Person person){
+        logger.info("Creating one Person");
+        return person;
+    }
+
+    public Person update(Person person){
+        logger.info("Updating one person");
+        return person;
+    }
 }
