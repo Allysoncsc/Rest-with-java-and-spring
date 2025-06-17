@@ -5,6 +5,8 @@ import br.com.allysoncsc.rest_with_java_spring_erudio.exception.ResourceNotFound
 import br.com.allysoncsc.rest_with_java_spring_erudio.model.Person;
 import br.com.allysoncsc.rest_with_java_spring_erudio.repository.PersonRepository;
 import org.apache.coyote.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
+
 
 @Service
 public class PersonService {
@@ -21,7 +23,7 @@ public class PersonService {
     PersonRepository personRepository;
 
     private final AtomicLong counter = new AtomicLong();
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 
 
     public List<Person> findAll(){

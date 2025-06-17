@@ -5,7 +5,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/rest_java?useTimezone=true&serverTimezone=UTC
     username: root
-    password: 0204aw
+    password: ec@vxx123
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,3 +13,9 @@ spring:
     hibernate:
       dialect: org.hibernate.dialect.MySQLDialect
   show-sql: false
+  open-in-view: false
+logging:
+  level:
+    root: WARN
+#    br.com.allysoncsc: DEBUG o ideak é rodar em warn ou error
+
