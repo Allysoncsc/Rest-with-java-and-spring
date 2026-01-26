@@ -1,0 +1,9 @@
+26/01/26-
+    webservice -> componente de software reutilizável que é exposto através do protocolo http
+                    é consumido através do browser, client ou outras aplicações
+
+
+
+
+
+

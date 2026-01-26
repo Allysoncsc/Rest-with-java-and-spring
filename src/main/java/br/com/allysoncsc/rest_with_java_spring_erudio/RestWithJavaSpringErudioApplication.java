@@ -7,7 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestWithJavaSpringErudioApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(RestWithJavaSpringErudioApplication.class, args);
 	}
 
 }
+
+/*
+04/07/25- adicionando dependencia do flyway para fazer migrations
+
+
+*/

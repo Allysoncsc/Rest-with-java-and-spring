@@ -35,4 +35,10 @@ public class MathController {
     }
 
 
+/*
+  INSER INTO person (id,addres,firt_name,gender,last_name) VALUES
+  (1,'São Paulo - Brasil', 'Ayrton',Male','Senna' ),
+  (2,'Anchiano - Italy', 'Leonardo' ,'Male', 'da Vinci'),
+
+*/
 }
