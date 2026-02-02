@@ -3,6 +3,28 @@
                     é consumido através do browser, client ou outras aplicações
 
 
+27/01/26-
+    SOAP -> usa o protocolo http para fazer chamadas  RPC(chamada de procedimento procedural),
+        é um protocolo de regras rifgidas, focado em segurança e transações,
+        ENVELOPA os dados antes de enviar,
+        usando principalemnte XML e sendo mais pesado. Usa o Wisdom na comunicação entre
+        o cliente, invoca serviços através do método RPC
+    REST -> (Representation State Transfer)não se limita ao XML, pode usar diferentes marktypes,
+     chamas serviços através de path na URL, envia os dados como são, sem empacotar.
+      é um estilo de arquitetura de software para sistemas distribuídos de hipermídia
+      conjunto de constraint:
+            cliente-servidor
+            stateless
+            cacheable-> pode guardar alguns dados, o sevidor informa quais
+            interface uniforme-> urls, identificação de recuso, HATEOS
+            Sistema de camadas-> deve suportar conveitos como balanceamento de carga, proxies e firewalls
+            código sobre demanda(opcional)
+
+
+
+
+    PIJ2327
+    10663459408
 
 
 
