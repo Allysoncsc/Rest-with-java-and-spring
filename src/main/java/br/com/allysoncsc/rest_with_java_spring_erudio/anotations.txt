@@ -23,9 +23,20 @@
 
 
 
-    PIJ2327
-    10663459408
+02/02/26 Curso udemy Aprenda Spring Boot framework-> aula 7
 
+               PARAMETROS
+                PATH PARAMS(obrigatórios)  EX: .../api/{valorParam}
+                QUERY PARAMS EX:... /api/find-by-name?firstName=Al
+                HEADER PARAMS
+
+                OS VERBOS
+                    POST -> CRIAR
+                    GET -> PEGAR(verbo de leitura)
+                    PUT -> ATUALZIAR
+                    D -> DELETAR
+ 09/02/26 Aprenda Spring Boot framework
+            aulas de 23 até 32
 
 
 
