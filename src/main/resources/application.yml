@@ -8,7 +8,7 @@ spring:
     password: ec@vxx123
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: none nb /
   properties:
     hibernate:
       dialect: org.hibernate.dialect.MySQLDialect
@@ -17,5 +17,5 @@ spring:
 logging:
   level:
     root: WARN
-#    br.com.allysoncsc: DEBUG o ideak é rodar em warn ou error
+#    br.com.allysoncsc: DEBUG o ideal é rodar em warn ou error
 
