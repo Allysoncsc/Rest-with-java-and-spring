@@ -1,6 +1,7 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.model;
 
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="person")
+@JsonPropertyOrder({"id","firstName","lastName","address"})
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;

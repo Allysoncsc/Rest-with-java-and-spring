@@ -22,6 +22,7 @@ public class MathController {
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo)throws Exception{
 
+
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) throw new UnsupportedMathOperationException("Please set a numeric value.");
         return sMath.sum(NumberConverter.converToDouble(numberOne),NumberConverter.converToDouble(numberTwo));
     }
@@ -33,6 +34,8 @@ public class MathController {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) throw new UnsupportedMathOperationException("Please set a numeric value.");
         return sMath.subtract(NumberConverter.converToDouble(numberOne), NumberConverter.converToDouble(numberTwo));
     }
+
+
 
 
 }

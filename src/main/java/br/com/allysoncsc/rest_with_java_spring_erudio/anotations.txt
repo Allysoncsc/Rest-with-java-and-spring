@@ -1,0 +1,28 @@
+@SpingBootAplication
+    marca como configuração sping
+    habilita configuração autamica
+    e aplica varredura de componentes nos pacotes e subpacotes
+
+@RestController
+    @Controller
+    @ResponseBody
+    Devolver tanto páginas como body
+
+@RequestMapping("/{nome}")
+
+@GetMapping("/sum/{numberOne}/{numberTwo}")
+@PathVariable("numberOne") String numberOne,
+@PathVariable("numberTwo") String numberTwo
+
+@RequestParam(value ="name", defaultValue = "Allyson") String name
+
+#COLOCAR SÓ WARN PARA NÃO OCUPAR ESPAÇO COM INFO NO AWS
+logging:
+  level:
+    root: WARN
+
+
+ #MIGRATIONS
+    São scripst que versionam as alterações do banco de dados
+ #FLYWAY
+    Ferramenta de código aberto que automatiza as migrations
