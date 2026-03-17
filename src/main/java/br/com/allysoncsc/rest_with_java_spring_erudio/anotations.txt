@@ -16,6 +16,9 @@
 
 @RequestParam(value ="name", defaultValue = "Allyson") String name
 
+@Configuration
+    classe que vai ter configurações e pode ter declarações de beans
+
 #COLOCAR SÓ WARN PARA NÃO OCUPAR ESPAÇO COM INFO NO AWS
 logging:
   level:

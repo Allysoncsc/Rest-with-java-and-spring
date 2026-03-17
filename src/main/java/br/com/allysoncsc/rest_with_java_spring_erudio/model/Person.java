@@ -1,6 +1,8 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,11 +11,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
 @Table(name="person")
 @JsonPropertyOrder({"id","firstName","lastName","address"})
+@JsonFilter("PersonFilter")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +34,11 @@ public class Person implements Serializable {
     private String address;
     @Column(nullable = false,length = 6)
     private String gender;
+    @Column(name = "birth_date")
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date birth;
+
+
 
     public Person() {
     }
@@ -40,6 +49,15 @@ public class Person implements Serializable {
         this.lastName = lastName;
         this.address = address;
         this.gender = gender;
+    }
+
+    public Person(Long id, String firstName, String lastName, String address, String gender, Date birth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.gender = gender;
+        this.birth = birth;
     }
 
     public Long getId() {
@@ -80,5 +98,12 @@ public class Person implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 }

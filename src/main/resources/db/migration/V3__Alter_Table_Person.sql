@@ -1,1 +1,1 @@
-ALTER TABLE person ADD data_nascimento DATE;
+ALTER TABLE person ADD birth_date DATE;

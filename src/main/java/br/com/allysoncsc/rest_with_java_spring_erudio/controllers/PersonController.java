@@ -1,6 +1,7 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.controllers;
 
 
+import br.com.allysoncsc.rest_with_java_spring_erudio.dto.ClienteResumoDto;
 import br.com.allysoncsc.rest_with_java_spring_erudio.model.Person;
 import br.com.allysoncsc.rest_with_java_spring_erudio.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,16 @@ public class PersonController {
         return personService.findAll();
     }
 
+    @GetMapping("/testeJdbc")
+    public ClienteResumoDto testeJdbc(){
+        return personService.testeJdbc();
+    }
     @PostMapping("/createperson")
     public Person create(@RequestBody Person person){
+
+        if (person.getFirstName() == null || person.getFirstName().trim().isEmpty()) {
+            throw new RuntimeException("firstName é obrigatório");
+        }
         return personService.create(person);
     }
 
@@ -40,6 +49,10 @@ public class PersonController {
     public void delete(@PathVariable("id") Long id){personService.delete(id);}
     @PostMapping("/updateperson")
     public Person update(@RequestBody Person person){
+
+        if (person.getId() == null || person.getId() <= 0) {
+            throw new RuntimeException("id inválido");
+        }
         return personService.update(person);
     }
 

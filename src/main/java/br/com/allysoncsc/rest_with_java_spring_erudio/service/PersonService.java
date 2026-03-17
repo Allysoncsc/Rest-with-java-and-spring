@@ -1,9 +1,11 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.service;
 
 
+import br.com.allysoncsc.rest_with_java_spring_erudio.dto.ClienteResumoDto;
 import br.com.allysoncsc.rest_with_java_spring_erudio.exception.ResourceNotFoundException;
 import br.com.allysoncsc.rest_with_java_spring_erudio.model.Person;
 import br.com.allysoncsc.rest_with_java_spring_erudio.repository.PersonRepository;
+import br.com.allysoncsc.rest_with_java_spring_erudio.repository.query.ClienteQueryRepository;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,15 @@ public class PersonService {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    ClienteQueryRepository clienteQueryRepository;
+
     private final AtomicLong counter = new AtomicLong();
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
+    public ClienteResumoDto testeJdbc(){
+        return clienteQueryRepository.retornarUsu();
+    }
 
     public List<Person> findAll(){
 //        List<Person> persons =  new ArrayList<Person>();
