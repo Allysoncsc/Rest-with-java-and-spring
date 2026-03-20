@@ -1,6 +1,7 @@
 package br.com.allysoncsc.rest_with_java_spring_erudio.service;
 
 
+import br.com.allysoncsc.rest_with_java_spring_erudio.controllers.PersonController;
 import br.com.allysoncsc.rest_with_java_spring_erudio.dto.ClienteResumoDto;
 import br.com.allysoncsc.rest_with_java_spring_erudio.exception.ResourceNotFoundException;
 import br.com.allysoncsc.rest_with_java_spring_erudio.model.Person;
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class PersonService {
@@ -39,7 +43,10 @@ public class PersonService {
 //            persons.add(person);
 //        }
 
-        return personRepository.findAll();
+        var persons =  personRepository.findAll();
+        //persons.forEach(p->addHateOSLinks(p));
+        persons.forEach(this::addHateOSLinks);
+        return persons;
     }
 
     public Person findById(Long id){
@@ -52,7 +59,9 @@ public class PersonService {
 //        person.setAddress("Ceará - Brasil");
 //        person.setGender("Male");
 
-        return personRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No record found for this ID"));
+        var dto = personRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No record found for this ID"));
+        addHateOSLinks( dto);
+        return dto;
     }
 
 
@@ -70,7 +79,9 @@ public class PersonService {
         logger.info("Creating one Person");
 
 
-        return personRepository.save(person);
+        var dto = personRepository.save(person);
+        addHateOSLinks(dto);
+        return dto;
     }
 
     public Person update(Person person){
@@ -83,5 +94,13 @@ public class PersonService {
         var p2= personRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No record found for this ID"));
         personRepository.delete(p2);
         return ResponseEntity.noContent().build();
+    }
+
+    private void  addHateOSLinks(Person dto){
+        dto.add(linkTo(methodOn(PersonController.class).findById(dto.getId())).withSelfRel().withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
+        dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("POST"));
+        dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
     }
 }

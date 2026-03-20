@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +19,7 @@ import java.util.Date;
 @Table(name="person")
 @JsonPropertyOrder({"id","firstName","lastName","address"})
 @JsonFilter("PersonFilter")
-public class Person implements Serializable {
+public class Person extends RepresentationModel<Person> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,8 +38,6 @@ public class Person implements Serializable {
     @Column(name = "birth_date")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date birth;
-
-
 
     public Person() {
     }

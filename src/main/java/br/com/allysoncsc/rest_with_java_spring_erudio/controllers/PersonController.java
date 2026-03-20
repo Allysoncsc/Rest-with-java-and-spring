@@ -46,7 +46,9 @@ public class PersonController {
 //            produces = MediaType.APPLICATION_JSON_VALUE
 //    )
     @DeleteMapping("/deleteperson/{id}")
-    public void delete(@PathVariable("id") Long id){personService.delete(id);}
+    public Class<?> delete(@PathVariable("id") Long id){personService.delete(id);
+        return null;
+    }
     @PostMapping("/updateperson")
     public Person update(@RequestBody Person person){
 
